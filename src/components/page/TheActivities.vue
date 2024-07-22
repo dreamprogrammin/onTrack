@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
- <h1>Activities</h1>
+ <h1 class="text-3xl font-black">Activities</h1>
 </template>
 
 <style scoped></style>

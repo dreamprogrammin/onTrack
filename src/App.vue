@@ -1,47 +1,32 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import TheHeader from "@/components/TheHeader.vue"
+import TheNav from "@/components/TheNav.vue"
+import TheTimeline from "@/components/page/TheTimeline.vue"
+import TheActivities from "@/components/page/TheActivities.vue"
+import TheProgress from "@/components/page/TheProgress.vue"
+import { PAGE_ACTIVITIES, PAGE_PROGRESS, PAGE_TIMELINE } from "@/contacts.js"
+import { ref } from "vue"
+
+const normalizePagesHash = () => {
+ const hash = window.location.hash.slice(1)
+
+ if (Object.keys([PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS]).includes(hash)) {
+  return hash
+ }
+
+ window.location.hash = PAGE_TIMELINE
+
+ return PAGE_TIMELINE
+}
+
+const currentPage = ref(normalizePagesHash())
 </script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+ <the-header />
+ <main class="flex-grow flex-col">
+  <the-timeline v-show="currentPage === PAGE_TIMELINE" />
+  <the-activities v-show="currentPage === PAGE_ACTIVITIES" />
+  <the-progress v-show="currentPage === PAGE_PROGRESS" />
+ </main>
+ <the-nav :current-page="currentPage" @navigator="currentPage = $event" />
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>

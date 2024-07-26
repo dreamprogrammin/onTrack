@@ -13,11 +13,11 @@ const props = defineProps({
   required: true,
   validator: validateSelectOptions
  },
- select: [null, Number, undefined]
+ selected: Number
 })
 
 const isNotSelected = computed(() => {
- return isUndefinedOrNull(props.select)
+ return isUndefinedOrNull(props.selected)
 })
 
 const emit = defineEmits({ select: isNumberOrNull })
@@ -25,7 +25,7 @@ const emit = defineEmits({ select: isNumberOrNull })
 
 <template>
  <div class="flex gap-2">
-  <base-button class="p-3" @click="emit('select', null)">
+  <base-button @click="emit('select', null)">
    <XMarkIcon class="h-8" />
   </base-button>
   <select
@@ -37,7 +37,7 @@ const emit = defineEmits({ select: isNumberOrNull })
     v-for="{ value, label } in options"
     :key="value"
     :value="value"
-    :selected="value === select"
+    :selected="value === selected"
    >
     {{ label }}
    </option>

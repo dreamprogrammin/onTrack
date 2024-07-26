@@ -2,7 +2,7 @@
 import TheLogo from "@/components/TheLogo.vue"
 import TheHeaderProgress from "@/components/TheHeaderProgress.vue"
 import { isPageValid } from "@/components/validator.js"
-import { PAGE_PROGRESS, PAGE_TIMELINE } from "@/contacts.js"
+import { PAGE_PROGRESS, PAGE_TIMELINE } from "@/constants.js"
 
 const emit = defineEmits({ navigator: isPageValid })
 </script>

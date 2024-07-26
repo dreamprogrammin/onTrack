@@ -1,4 +1,4 @@
-import { HOUR_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from "@/contacts.js"
+import { HOUR_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from "@/constants.js"
 
 export function isPageValid(page) {
  return Object.keys(NAV_ITEMS).includes(page)
@@ -8,7 +8,7 @@ export function isTimelineItemValid({ hour }) {
  return isNumber(hour) && isHourValid(hour)
 }
 
-function isHourValid(hour) {
+export function isHourValid(hour) {
  return isBetween(hour, MIDNIGHT_HOUR, HOUR_IN_DAY - 1)
 }
 
@@ -26,6 +26,18 @@ export function isNumberOrNull(value) {
 
 export function isUndefinedOrNull(value) {
  return isNull(value) || isUndefined(value)
+}
+
+export function validateActivities(activities) {
+ return activities.every(isActivityValid)
+}
+
+export function isActivityValid(activity) {
+ return isNotEmptyString(activity)
+}
+
+function isNotEmptyString(value) {
+ return isString(value) && value.length > 0
 }
 
 function isNull(value) {

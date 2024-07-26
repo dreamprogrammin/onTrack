@@ -1,4 +1,4 @@
-import { HOUR_IN_DAY, MIDNIGHT_HOUR, PAGE_TIMELINE } from "@/contacts.js"
+import { HOUR_IN_DAY, MIDNIGHT_HOUR, PAGE_TIMELINE } from "@/constants.js"
 import { isPageValid } from "@/components/validator.js"
 
 export const normalizePagesHash = () => {

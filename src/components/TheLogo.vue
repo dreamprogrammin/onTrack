@@ -1,5 +1,5 @@
 <script setup>
-import { PAGE_TIMELINE } from "@/contacts.js"
+import { PAGE_TIMELINE } from "@/constants.js"
 </script>
 
 <template>

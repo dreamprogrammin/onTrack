@@ -1,4 +1,4 @@
-import { HOUR_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from "@/constants.js"
+import { BUTTON_TYPES, HOUR_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from "@/constants.js"
 
 export function isPageValid(page) {
  return Object.keys(NAV_ITEMS).includes(page)
@@ -15,9 +15,13 @@ export function isHourValid(hour) {
 export function validateTimelineItems(timelineItems) {
  return timelineItems.every(isTimelineItemValid)
 }
-
+// функция строки и номера
 export function validateSelectOptions(options) {
  return options.every(isSelectOptionValid)
+}
+// функция для функции строки и номера
+function isSelectOptionValid({ value, label }) {
+ return isNumber(value) && isNotEmptyString(label)
 }
 
 export function isNumberOrNull(value) {
@@ -26,6 +30,14 @@ export function isNumberOrNull(value) {
 
 export function isUndefinedOrNull(value) {
  return isNull(value) || isUndefined(value)
+}
+
+export function isUndefined(value) {
+ return value === undefined
+}
+
+export function isButtonTypeValid(type) {
+ return BUTTON_TYPES.includes(type)
 }
 
 export function validateActivities(activities) {
@@ -42,14 +54,6 @@ function isNotEmptyString(value) {
 
 function isNull(value) {
  return value === null
-}
-
-function isUndefined(value) {
- return value === undefined
-}
-
-function isSelectOptionValid({ value, label }) {
- return isNumber(value) && isString(label)
 }
 
 function isString(label) {

@@ -6,6 +6,11 @@ export const PAGE_PROGRESS = "progress"
 export const HOUR_IN_DAY = 24
 export const MIDNIGHT_HOUR = 0
 
+export const BUTTON_TYPE_NEUTRAL = "neutral"
+export const BUTTON_TYPE_DANGER = "danger"
+
+export const BUTTON_TYPES = [BUTTON_TYPE_NEUTRAL, BUTTON_TYPE_DANGER]
+
 export const NAV_ITEMS = {
  [PAGE_TIMELINE]: ClockIcon,
  [PAGE_ACTIVITIES]: ListBulletIcon,

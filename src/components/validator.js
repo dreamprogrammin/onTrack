@@ -1,7 +1,11 @@
-import { HOUR_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from "@/constants.js"
+import { BUTTON_TYPES, HOUR_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from "@/constants.js"
 
 export function isPageValid(page) {
  return Object.keys(NAV_ITEMS).includes(page)
+}
+
+export function isButtonTypeValid(type) {
+ return BUTTON_TYPES.includes(type)
 }
 
 export function isTimelineItemValid({ hour }) {

@@ -1,5 +1,4 @@
 <script setup>
-import { BUTTON_TYPE_DANGER, BUTTON_TYPE_NEUTRAL } from "@/constants.js"
 import { isButtonTypeValid } from "@/components/validator.js"
 
 defineProps({
@@ -9,6 +8,9 @@ defineProps({
   validator: isButtonTypeValid
  }
 })
+</script>
+<script>
+import { BUTTON_TYPE_DANGER, BUTTON_TYPE_NEUTRAL } from "@/constants.js"
 
 const typeClasses = {
  [BUTTON_TYPE_NEUTRAL]: "bg-gray-100 enabled:hover:bg-gray-200",

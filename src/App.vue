@@ -34,7 +34,7 @@ const currentPage = ref(normalizePagesHash())
 </script>
 <template>
  <the-header @navigator="goTo($event)" />
- <main class="flex-grow flex-col">
+ <main class="flex grow flex-col">
   <the-timeline
    v-show="currentPage === PAGE_TIMELINE"
    :timeline-items="timelineItems"

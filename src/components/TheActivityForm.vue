@@ -2,15 +2,18 @@
 import BaseButton from "@/components/BaseButton.vue"
 import { PlusIcon } from "@heroicons/vue/24/outline/index.js"
 import { isActivityValid } from "@/components/validator.js"
+import { ref } from "vue"
 
 const emit = defineEmits({
  submit: isActivityValid
 })
 
-let activity = ""
+const activity = ref("")
 
 function submit() {
- emit("submit", activity)
+ emit("submit", activity.value)
+
+ activity.value = ""
 }
 </script>
 
@@ -25,7 +28,7 @@ function submit() {
    placeholder="Activity name"
    type="text"
   />
-  <base-button>
+  <base-button :disabled="activity.trim() === ''">
    <PlusIcon class="h-8" />
   </base-button>
  </form>

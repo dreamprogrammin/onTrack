@@ -1,0 +1,34 @@
+<script setup>
+import BaseButton from "@/components/BaseButton.vue"
+import { PlusIcon } from "@heroicons/vue/24/outline/index.js"
+import { isActivityValid } from "@/components/validator.js"
+
+const emit = defineEmits({
+ submit: isActivityValid
+})
+
+let activity = ""
+
+function submit() {
+ emit("submit", activity)
+}
+</script>
+
+<template>
+ <form
+  @submit.prevent="submit('submit', activity)"
+  class="sticky bottom-[57px] flex gap-2 border-t p-4"
+ >
+  <input
+   class="w-full rounded border px-4 text-xl"
+   v-model="activity"
+   placeholder="Activity name"
+   type="text"
+  />
+  <base-button>
+   <PlusIcon class="h-8" />
+  </base-button>
+ </form>
+</template>
+
+<style scoped></style>

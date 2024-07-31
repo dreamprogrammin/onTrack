@@ -5,7 +5,7 @@ import { validateSelectOptions, isUndefinedOrNull, isNumberOrNull } from "@/comp
 import BaseButton from "@/components/BaseButton.vue"
 import { XMarkIcon } from "@heroicons/vue/24/outline/index.js"
 import { computed } from "vue"
-import { BUTTON_TYPE_NEUTRAL, BUTTON_TYPE_PRIMARY } from "@/constants.js"
+import { BUTTON_TYPE_NEUTRAL } from "@/constants.js"
 
 const props = defineProps({
  placeholder: { required: true, type: String },

@@ -7,8 +7,11 @@ import { isActivityValid, validateActivities } from "@/components/validator.js"
 defineProps({ activities: { type: Array, required: true, validator: validateActivities } })
 
 const emit = defineEmits({
+ createActivity: isActivityValid,
  deleteActivity: isActivityValid
 })
+
+let newActivity = ""
 </script>
 
 <template>
@@ -21,8 +24,16 @@ const emit = defineEmits({
     @delete="emit('deleteActivity', activity)"
    />
   </ul>
-  <form class="sticky bottom-[57px] flex gap-2 border-t p-4">
-   <input class="w-full rounded border px-4 text-xl" placeholder="Activity name" type="text" />
+  <form
+   @submit.prevent="emit('createActivity', newActivity)"
+   class="sticky bottom-[57px] flex gap-2 border-t p-4"
+  >
+   <input
+    class="w-full rounded border px-4 text-xl"
+    v-model="newActivity"
+    placeholder="Activity name"
+    type="text"
+   />
    <base-button>
     <PlusIcon class="h-8" />
    </base-button>

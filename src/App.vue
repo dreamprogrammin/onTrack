@@ -22,6 +22,10 @@ function deleteActivity(activity) {
  activities.value.splice(activities.value.indexOf(activity), 1)
 }
 
+function createActivity(activity) {
+ activities.value.push(activity)
+}
+
 const activitiesSelectOptions = generateActivitiesSelectOptions(activities.value)
 
 const timelineItems = generateTimelineItems()
@@ -39,6 +43,7 @@ const currentPage = ref(normalizePagesHash())
   <the-activities
    v-show="currentPage === PAGE_ACTIVITIES"
    :activities="activities"
+   @create-activity="createActivity"
    @delete-activity="deleteActivity"
   />
   <the-progress v-show="currentPage === PAGE_PROGRESS" />

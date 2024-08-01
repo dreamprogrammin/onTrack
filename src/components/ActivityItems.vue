@@ -9,7 +9,7 @@ import { isActivityValid, isUndefined } from "@/components/validator.js"
 const secondToComplete = ref(null)
 
 defineProps({
- activity: { type: String, required: true, validator: isActivityValid }
+ activity: { type: Object, required: true, validator: isActivityValid }
 })
 
 const emit = defineEmits({
@@ -23,7 +23,7 @@ const emit = defineEmits({
    <base-button :type="BUTTON_TYPE_DANGER" @click="emit('delete')">
     <TrashIcon class="h-8" />
    </base-button>
-   <span class="truncate text-xl">{{ activity }}</span>
+   <span class="truncate text-xl">{{ activity.name }}</span>
   </div>
   <div>
    <base-select

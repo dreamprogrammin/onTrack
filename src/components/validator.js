@@ -21,7 +21,7 @@ export function validateSelectOptions(options) {
 }
 // функция для функции строки и номера
 function isSelectOptionValid({ value, label }) {
- return isNumber(value) && isNotEmptyString(label)
+ return isNumber(value) || (isNotEmptyString(value) && isNotEmptyString(label))
 }
 
 export function isNumberOrNull(value) {
@@ -44,8 +44,8 @@ export function validateActivities(activities) {
  return activities.every(isActivityValid)
 }
 
-export function isActivityValid(activity) {
- return isNotEmptyString(activity)
+export function isActivityValid({ id, name, secondToComplete }) {
+ return [isNotEmptyString(id), isNotEmptyString(name), isNumber(secondToComplete)].every(Boolean)
 }
 
 function isNotEmptyString(value) {

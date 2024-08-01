@@ -12,23 +12,11 @@ export const normalizePagesHash = () => {
 }
 
 export function generateActivities() {
- return [
-  {
-   id: id(),
-   name: "Reading",
-   secondToComplete: 0 * SECONDS_IN_HOUR
-  },
-  {
-   id: id(),
-   name: "Coding",
-   secondToComplete: 1 * SECONDS_IN_HOUR
-  },
-  {
-   id: id(),
-   name: "Training",
-   secondToComplete: 2 * SECONDS_IN_HOUR
-  }
- ]
+ return ["Reading", "Coding", "Training"].map((name, hour) => ({
+  id: id(),
+  name,
+  secondToComplete: hour * SECONDS_IN_HOUR
+ }))
 }
 
 export function id() {

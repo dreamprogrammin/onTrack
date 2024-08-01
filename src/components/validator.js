@@ -28,8 +28,16 @@ export function isNumberOrNull(value) {
  return isNull(value) || isNumber(value)
 }
 
+export function isSelectValueValid(value) {
+ return isNumberOrNull(value) || isNotEmptyString(value)
+}
+
 export function isUndefinedOrNull(value) {
  return isNull(value) || isUndefined(value)
+}
+
+export function isNull(value) {
+ return value === null
 }
 
 export function isUndefined(value) {
@@ -50,10 +58,6 @@ export function isActivityValid({ id, name, secondToComplete }) {
 
 function isNotEmptyString(value) {
  return isString(value) && value.length > 0
-}
-
-function isNull(value) {
- return value === null
 }
 
 function isString(label) {

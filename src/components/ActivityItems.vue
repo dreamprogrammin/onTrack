@@ -6,7 +6,7 @@ import { ref } from "vue"
 import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from "@/constants.js"
 import { isActivityValid, isUndefined } from "@/components/validator.js"
 
-const secondToComplete = ref(null)
+const secondToComplete = ref(1)
 
 defineProps({
  activity: { type: Object, required: true, validator: isActivityValid }

@@ -12,7 +12,7 @@ import {
  id
 } from "@/function.js"
 import { PAGE_TIMELINE, PAGE_PROGRESS, PAGE_ACTIVITIES } from "@/constants.js"
-import { ref } from "vue"
+import { computed, ref } from "vue"
 
 const goTo = (page) => {
  currentPage.value = page
@@ -28,7 +28,7 @@ function createActivity(activity) {
  activities.value.push(activity)
 }
 
-const activitiesSelectOptions = generateActivitiesSelectOptions(activities.value)
+const activitiesSelectOptions = computed(() => generateActivitiesSelectOptions(activities.value))
 
 const timelineItems = generateTimelineItems()
 

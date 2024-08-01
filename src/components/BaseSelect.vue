@@ -1,11 +1,16 @@
 <script setup>
 // defineProps(["placeholder", "options", "select"])
 
-import { validateSelectOptions, isUndefinedOrNull, isNumberOrNull } from "@/components/validator.js"
+import {
+ validateSelectOptions,
+ isUndefinedOrNull,
+ isSelectValueValid
+} from "@/components/validator.js"
 import BaseButton from "@/components/BaseButton.vue"
 import { XMarkIcon } from "@heroicons/vue/24/outline/index.js"
 import { computed } from "vue"
 import { BUTTON_TYPE_NEUTRAL } from "@/constants.js"
+import { normalizeSelectValue } from "@/function.js"
 
 const props = defineProps({
  placeholder: { required: true, type: String },
@@ -14,24 +19,28 @@ const props = defineProps({
   required: true,
   validator: validateSelectOptions
  },
- selected: Number
+ selected: [Number, String]
 })
 
 const isNotSelected = computed(() => {
  return isUndefinedOrNull(props.selected)
 })
 
-const emit = defineEmits({ select: isNumberOrNull })
+const emit = defineEmits({ select: isSelectValueValid })
+
+function select(value) {
+ emit("select", normalizeSelectValue(value))
+}
 </script>
 
 <template>
  <div class="flex gap-2">
-  <base-button :type="BUTTON_TYPE_NEUTRAL" @click="emit('select', null)">
+  <base-button :type="BUTTON_TYPE_NEUTRAL" @click="select(null)">
    <XMarkIcon class="h-8" />
   </base-button>
   <select
    class="w-full truncate rounded bg-gray-100 px-2 py-1 text-2xl"
-   @change="emit('select', +$event.target.value)"
+   @change="select($event.target.value)"
   >
    <option disabled :selected="isNotSelected" value="">{{ placeholder }}</option>
    <option

@@ -38,6 +38,10 @@ function setTimelineItemActivity({ timelineItem, activity }) {
  timelineItem.activityId = activity?.id || null
 }
 
+function setActivitySecondToComplete(activity, secondToComplete) {
+ activity.secondToComplete = secondToComplete
+}
+
 const activitiesSelectOptions = computed(() => generateActivitiesSelectOptions(activities.value))
 
 const timelineItems = ref(generateTimelineItems())
@@ -59,6 +63,7 @@ const currentPage = ref(normalizePagesHash())
    :activities="activities"
    @create-activity="createActivity"
    @delete-activity="deleteActivity"
+   @set-activity-second-to-complete="setActivitySecondToComplete"
   />
   <the-progress v-show="currentPage === PAGE_PROGRESS" />
  </main>

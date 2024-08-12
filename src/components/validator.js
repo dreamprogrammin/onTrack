@@ -8,6 +8,10 @@ export function isTimelineItemValid({ hour }) {
  return isNumber(hour) && isHourValid(hour)
 }
 
+export function isNumber(value) {
+ return typeof value === "number"
+}
+
 export function isHourValid(hour) {
  return isBetween(hour, MIDNIGHT_HOUR, HOUR_IN_DAY - 1)
 }
@@ -62,10 +66,6 @@ function isNotEmptyString(value) {
 
 function isString(label) {
  return typeof label === "string"
-}
-
-function isNumber(value) {
- return typeof value === "number"
 }
 
 function isBetween(value, start, end) {

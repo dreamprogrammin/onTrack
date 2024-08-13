@@ -26,8 +26,8 @@ const emit = defineEmits({
   <div>
    <base-select
     class="font-mono"
-    :options="PERIOD_SELECT_OPTIONS"
     placeholder="h:mm"
+    :options="PERIOD_SELECT_OPTIONS"
     :selected="activity.secondToComplete || null"
     @select="emit('setSecondToComplete', $event || 0)"
    />

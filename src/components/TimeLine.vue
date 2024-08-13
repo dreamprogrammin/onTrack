@@ -8,6 +8,7 @@ import {
  validateActivities,
  validateSelectOptions
 } from "@/components/validator.js"
+import { NULLABLE_ACTIVITY } from "@/constants.js"
 
 const props = defineProps({
  timelineItem: {
@@ -28,13 +29,15 @@ const props = defineProps({
 })
 
 const emit = defineEmits({
- selectActivity(activity) {
-  return isActivityValid(activity) || isNull(activity)
- }
+ selectActivity: isActivityValid
 })
 
 function selectActivities(id) {
- emit("selectActivity", props.activities.find((activity) => activity.id === id) || null)
+ emit("selectActivity", findActivityById(id))
+}
+
+function findActivityById(id) {
+ return props.activities.find((activity) => activity.id === id) || NULLABLE_ACTIVITY
 }
 </script>
 

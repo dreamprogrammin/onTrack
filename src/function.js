@@ -1,4 +1,11 @@
-import { HOUR_IN_DAY, MIDNIGHT_HOUR, PAGE_TIMELINE, SECONDS_IN_HOUR } from "@/constants.js"
+import {
+ HOUR_IN_DAY,
+ MIDNIGHT_HOUR,
+ MINUTES_IN_HOUR,
+ PAGE_TIMELINE,
+ SECONDS_IN_HOUR,
+ SECONDS_IN_MINUTES
+} from "@/constants.js"
 import { isNull, isPageValid } from "@/components/validator.js"
 
 export const normalizePagesHash = () => {
@@ -42,4 +49,20 @@ export function normalizeSelectValue(value) {
 
 export function generateActivitiesSelectOptions(activities) {
  return activities.map((activity) => ({ value: activity.id, label: activity.name }))
+}
+
+export function generatePeriodSelectOptions(periodsInMinutes) {
+ return periodsInMinutes.map((periodsInMinutes) => ({
+  value: periodsInMinutes * SECONDS_IN_MINUTES,
+  label: generatePeriodSelectOptionsValue(periodsInMinutes)
+ }))
+}
+
+function generatePeriodSelectOptionsValue(periodInMinutes) {
+ const hour = Math.floor(periodInMinutes / MINUTES_IN_HOUR)
+  .toString()
+  .padStart(2, 0)
+ const minute = (periodInMinutes % MINUTES_IN_HOUR).toString().padStart(2, 0)
+
+ return `${hour}:${minute}`
 }

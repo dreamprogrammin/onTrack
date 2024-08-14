@@ -23,7 +23,6 @@ function deleteActivity(activity) {
  timelineItems.value.forEach((timelineItem) => {
   if (timelineItem.activityId === activity.id) {
    timelineItem.activityId = null
-   console.log("asd")
   }
  })
 

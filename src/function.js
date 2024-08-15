@@ -36,7 +36,8 @@ export function generateTimelineItems() {
  for (let hour = MIDNIGHT_HOUR; hour < HOUR_IN_DAY; hour++) {
   timelineItems.push({
    hour,
-   activityId: null
+   activityId: null,
+   activitySeconds: 0
   })
  }
 
@@ -65,4 +66,14 @@ function generatePeriodSelectOptionsValue(periodInMinutes) {
  const minute = (periodInMinutes % MINUTES_IN_HOUR).toString().padStart(2, 0)
 
  return `${hour}:${minute}`
+}
+
+export function formatSeconds(seconds) {
+ const date = new Date()
+
+ date.setTime(Math.abs(seconds) * 1000)
+
+ const utc = date.toUTCString()
+
+ return utc.substring(utc.indexOf(":") - 2, utc.indexOf(":") + 6)
 }

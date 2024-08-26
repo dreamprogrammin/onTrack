@@ -13,16 +13,21 @@ import {
 import { PAGE_TIMELINE, PAGE_PROGRESS, PAGE_ACTIVITIES } from "@/constants.js"
 import { computed, ref } from "vue"
 
+const activities = ref(generateActivities())
+
+const timelineItems = ref(generateTimelineItems(activities.value))
+
+const currentPage = ref(normalizePagesHash())
+
 const goTo = (page) => {
  currentPage.value = page
 }
-
-const activities = ref(generateActivities())
 
 function deleteActivity(activity) {
  timelineItems.value.forEach((timelineItem) => {
   if (timelineItem.activityId === activity.id) {
    timelineItem.activityId = null
+   timelineItem.activitySeconds = 0
   }
  })
 
@@ -42,10 +47,6 @@ function setActivitySecondToComplete(activity, secondToComplete) {
 }
 
 const activitiesSelectOptions = computed(() => generateActivitiesSelectOptions(activities.value))
-
-const timelineItems = ref(generateTimelineItems())
-
-const currentPage = ref(normalizePagesHash())
 </script>
 <template>
  <the-header @navigator="goTo($event)" />

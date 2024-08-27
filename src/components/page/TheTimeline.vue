@@ -34,6 +34,8 @@ const props = defineProps({
  }
 })
 
+defineExpose({ scrollToHour })
+
 const emit = defineEmits({
  setTimelineItemActivity(timelineItem, activity) {
   return [isTimelineItemValid(timelineItem), isActivityValid(activity)].every(Boolean)
@@ -46,15 +48,17 @@ watchPostEffect(async () => {
  if (props.currentPage === PAGE_TIMELINE) {
   await nextTick()
 
-  scrollToHour(new Date().getHours())
+  scrollToHour(null, false)
  }
 })
 
-function scrollToHour(hour) {
+function scrollToHour(hour = null, isSmooth = true) {
+ const options = { behavior: isSmooth ? "smooth" : "instant" }
+ hour ??= new Date().getHours()
  if (hour === MIDNIGHT_HOUR) {
-  document.body.scrollIntoView()
+  document.body.scrollIntoView(options)
  } else {
-  timelineItemRefs.value[hour - 1].$el.scrollIntoView()
+  timelineItemRefs.value[hour - 1].$el.scrollIntoView(options)
  }
 }
 </script>

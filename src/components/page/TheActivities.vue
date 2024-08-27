@@ -1,10 +1,22 @@
 <script setup>
 import ActivityItems from "@/components/ActivityItems.vue"
-import { isActivityValid, validateActivities, isNumber } from "@/components/validator.js"
+import {
+ isActivityValid,
+ validateActivities,
+ isNumber,
+ validateTimelineItems
+} from "@/components/validator.js"
 import TheActivityForm from "@/components/TheActivityForm.vue"
 import TheActivitiesEmptyState from "@/components/TheActivitiesEmptyState.vue"
 
-defineProps({ activities: { type: Array, required: true, validator: validateActivities } })
+defineProps({
+ activities: { type: Array, required: true, validator: validateActivities },
+ timelineItems: {
+  type: Array,
+  required: true,
+  validator: validateTimelineItems
+ }
+})
 
 const emit = defineEmits({
  setActivitySecondToComplete(activity, secondToComplete) {
@@ -25,6 +37,7 @@ function setSecondToComplete(activity, secondToComplete) {
    <activity-items
     v-for="activity in activities"
     :key="activity.id"
+    :timeline-items="timelineItems"
     :activity="activity"
     @delete="emit('deleteActivity', activity)"
     @set-second-to-complete="setSecondToComplete(activity, $event)"

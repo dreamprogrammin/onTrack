@@ -74,6 +74,7 @@ const activitiesSelectOptions = computed(() => generateActivitiesSelectOptions(a
    :activities="activities"
    @create-activity="createActivity"
    @delete-activity="deleteActivity"
+   :timeline-items="timelineItems"
    @set-activity-second-to-complete="setActivitySecondToComplete"
   />
   <the-progress v-show="currentPage === PAGE_PROGRESS" />

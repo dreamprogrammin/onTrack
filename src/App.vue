@@ -57,6 +57,7 @@ const activitiesSelectOptions = computed(() => generateActivitiesSelectOptions(a
    :activities="activities"
    :activities-select-options="activitiesSelectOptions"
    @set-timeline-item-activity="setTimelineItemActivity"
+   :current-page="currentPage"
   />
   <the-activities
    v-show="currentPage === PAGE_ACTIVITIES"

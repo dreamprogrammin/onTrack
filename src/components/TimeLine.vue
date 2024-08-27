@@ -3,6 +3,7 @@ import BaseSelect from "@/components/BaseSelect.vue"
 import TimelineHour from "@/components/TimelineHour.vue"
 import {
  isActivityValid,
+ isPageValid,
  isTimelineItemValid,
  validateActivities,
  validateSelectOptions
@@ -50,7 +51,7 @@ function findActivityById(id) {
    :selected="timelineItem.activityId"
    @select="selectActivities"
   />
-  <timeline-stopwatch :seconds="timelineItem.activitySeconds" />
+  <timeline-stopwatch :seconds="timelineItem.activitySeconds" :hour="timelineItem.hour" />
  </li>
 </template>
 

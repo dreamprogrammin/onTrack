@@ -55,6 +55,10 @@ function setActivitySecondToComplete(activity, secondToComplete) {
  activity.secondToComplete = secondToComplete
 }
 
+function updateTimelineItemActivitySeconds(timelineItem, activitySeconds) {
+ timelineItem.activitySeconds += activitySeconds
+}
+
 const activitiesSelectOptions = computed(() => generateActivitiesSelectOptions(activities.value))
 </script>
 <template>
@@ -68,6 +72,7 @@ const activitiesSelectOptions = computed(() => generateActivitiesSelectOptions(a
    @set-timeline-item-activity="setTimelineItemActivity"
    :current-page="currentPage"
    ref="timeline"
+   @update-timeline-item-activity-seconds="updateTimelineItemActivitySeconds"
   />
   <the-activities
    v-show="currentPage === PAGE_ACTIVITIES"

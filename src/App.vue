@@ -21,8 +21,6 @@ const currentPage = ref(normalizePagesHash())
 
 const timeline = ref()
 
-provide("updateTimelineItemActivitySeconds", updateTimelineItemActivitySeconds)
-
 const goTo = (page) => {
  if (currentPage.value === PAGE_TIMELINE && page === PAGE_TIMELINE) {
   timeline.value.scrollToHour()
@@ -62,6 +60,11 @@ function updateTimelineItemActivitySeconds(timelineItem, activitySeconds) {
 }
 
 const activitiesSelectOptions = computed(() => generateActivitiesSelectOptions(activities.value))
+
+provide("updateTimelineItemActivitySeconds", updateTimelineItemActivitySeconds)
+provide("timelineItems", timelineItems.value)
+provide("activities", activities.value)
+provide("activitiesSelectOptions", activitiesSelectOptions.value)
 </script>
 <template>
  <the-header @navigator="goTo($event)" />
@@ -69,8 +72,6 @@ const activitiesSelectOptions = computed(() => generateActivitiesSelectOptions(a
   <the-timeline
    v-show="currentPage === PAGE_TIMELINE"
    :timeline-items="timelineItems"
-   :activities="activities"
-   :activities-select-options="activitiesSelectOptions"
    @set-timeline-item-activity="setTimelineItemActivity"
    :current-page="currentPage"
    ref="timeline"
@@ -80,7 +81,6 @@ const activitiesSelectOptions = computed(() => generateActivitiesSelectOptions(a
    :activities="activities"
    @create-activity="createActivity"
    @delete-activity="deleteActivity"
-   :timeline-items="timelineItems"
    @set-activity-second-to-complete="setActivitySecondToComplete"
   />
   <the-progress v-show="currentPage === PAGE_PROGRESS" />

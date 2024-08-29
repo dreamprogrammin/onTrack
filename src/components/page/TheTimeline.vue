@@ -2,8 +2,6 @@
 import TimeLine from "@/components/TimeLine.vue"
 import { MIDNIGHT_HOUR, PAGE_TIMELINE } from "@/constants.js"
 import {
- validateActivities,
- validateSelectOptions,
  validateTimelineItems,
  isTimelineItemValid,
  isActivityValid,
@@ -16,16 +14,6 @@ const props = defineProps({
   type: Array,
   required: true,
   validator: validateTimelineItems
- },
- activities: {
-  type: Array,
-  required: true,
-  validator: validateActivities
- },
- activitiesSelectOptions: {
-  type: Array,
-  required: true,
-  validator: validateSelectOptions
  },
  currentPage: {
   type: String,
@@ -70,8 +58,6 @@ function scrollToHour(hour = null, isSmooth = true) {
     v-for="timelineItem in timelineItems"
     :key="timelineItem.hour"
     :timeline-item="timelineItem"
-    :activities="activities"
-    :activities-select-options="activitiesSelectOptions"
     @select-activity="emit('setTimelineItemActivity', timelineItem, $event)"
     ref="timelineItemRefs"
     @scroll-to-hour="scrollToHour"

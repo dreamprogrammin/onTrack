@@ -8,34 +8,27 @@ import {
  BUTTON_TYPE_SUCCESS,
  BUTTON_TYPE_WARNING
 } from "@/constants.js"
-import { isHourValid, isNumber } from "@/components/validator.js"
-import { ref } from "vue"
+import { isTimelineItemValid } from "@/components/validator.js"
+import { inject, ref } from "vue"
 
 const props = defineProps({
- seconds: {
-  type: Number,
-  default: 0,
-  validator: isNumber
- },
- hour: {
-  type: Number,
+ timelineItem: {
+  type: Object,
   required: true,
-  validator: isHourValid
+  validator: isTimelineItemValid
  }
 })
 
-const emit = defineEmits({
- updateSeconds: isNumber
-})
+const updateTimelineItemActivitySeconds = inject("updateTimelineItemActivitySeconds")
 
-const isStartButtonDisabled = props.hour !== new Date().getHours()
+const isStartButtonDisabled = props.timelineItem.hour !== new Date().getHours()
 
-const seconds = ref(props.seconds)
+const seconds = ref(props.timelineItem.activitySeconds)
 const isRunning = ref(false)
 
 function start() {
  isRunning.value = setInterval(() => {
-  emit("updateSeconds", 1)
+  updateTimelineItemActivitySeconds(props.timelineItem, 1)
   seconds.value++
  }, MILLISECONDS_IN_SECONDS)
 }
@@ -45,7 +38,7 @@ function stop() {
  isRunning.value = false
 }
 function reset() {
- emit("updateSeconds", -seconds.value)
+ updateTimelineItemActivitySeconds(props.timelineItem, -seconds.value)
  stop()
 
  seconds.value = 0

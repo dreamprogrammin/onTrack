@@ -11,7 +11,7 @@ import {
  generateActivities
 } from "@/function.js"
 import { PAGE_TIMELINE, PAGE_PROGRESS, PAGE_ACTIVITIES } from "@/constants.js"
-import { computed, ref } from "vue"
+import { computed, provide, ref } from "vue"
 
 const activities = ref(generateActivities())
 
@@ -20,6 +20,8 @@ const timelineItems = ref(generateTimelineItems(activities.value))
 const currentPage = ref(normalizePagesHash())
 
 const timeline = ref()
+
+provide("updateTimelineItemActivitySeconds", updateTimelineItemActivitySeconds)
 
 const goTo = (page) => {
  if (currentPage.value === PAGE_TIMELINE && page === PAGE_TIMELINE) {
@@ -72,7 +74,6 @@ const activitiesSelectOptions = computed(() => generateActivitiesSelectOptions(a
    @set-timeline-item-activity="setTimelineItemActivity"
    :current-page="currentPage"
    ref="timeline"
-   @update-timeline-item-activity-seconds="updateTimelineItemActivitySeconds"
   />
   <the-activities
    v-show="currentPage === PAGE_ACTIVITIES"

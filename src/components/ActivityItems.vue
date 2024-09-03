@@ -2,24 +2,24 @@
 import BaseButton from "@/components/BaseButton.vue"
 import BaseSelect from "@/components/BaseSelect.vue"
 import { TrashIcon } from "@heroicons/vue/24/outline/index.js"
-import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from "@/constants.js"
-import { isActivityValid, isNumber, isUndefined } from "@/components/validator.js"
+import { BUTTON_TYPE_DANGER } from "@/constants.js"
+import { isActivityValid } from "@/components/validator.js"
 import ActivitySecondsToComplete from "@/components/ActivitySecondsToComplete.vue"
+import { inject } from "vue"
 
 defineProps({
  activity: { type: Object, required: true, validator: isActivityValid }
 })
 
-const emit = defineEmits({
- setSecondToComplete: isNumber,
- delete: isUndefined
-})
+const periodSelectOptions = inject("periodSelectOptions")
+const setActivitySecondToComplete = inject("setActivitySecondToComplete")
+const deleteActivity = inject("deleteActivity")
 </script>
 
 <template>
  <li class="flex flex-col gap-2 p-4">
   <div class="flex items-center gap-2">
-   <base-button :type="BUTTON_TYPE_DANGER" @click="emit('delete')">
+   <base-button :type="BUTTON_TYPE_DANGER" @click="deleteActivity(activity)">
     <TrashIcon class="h-8" />
    </base-button>
    <span class="truncate text-xl">{{ activity.name }}</span>
@@ -28,9 +28,9 @@ const emit = defineEmits({
    <base-select
     class="flex-grow font-mono"
     placeholder="h:mm"
-    :options="PERIOD_SELECT_OPTIONS"
+    :options="periodSelectOptions"
     :selected="activity.secondToComplete || null"
-    @select="emit('setSecondToComplete', $event || 0)"
+    @select="setActivitySecondToComplete(activity, $event || 0)"
    />
    <activity-seconds-to-complete v-if="activity.secondToComplete" :activity="activity" />
   </div>

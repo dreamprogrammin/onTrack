@@ -26,10 +26,19 @@ export const BUTTON_TYPES = [
  BUTTON_TYPE_SUCCESS
 ]
 
-export const NAV_ITEMS = {
- [PAGE_TIMELINE]: ClockIcon,
- [PAGE_ACTIVITIES]: ListBulletIcon,
- [PAGE_PROGRESS]: ChartBarIcon
-}
+export const NAV_ITEMS = [
+ {
+  page: PAGE_TIMELINE,
+  icon: ClockIcon
+ },
+ {
+  page: PAGE_ACTIVITIES,
+  icon: ListBulletIcon
+ },
+ {
+  page: PAGE_PROGRESS,
+  icon: ChartBarIcon
+ }
+]
 
 export const PERIOD_SELECT_OPTIONS = generatePeriodSelectOptions()

@@ -1,21 +1,5 @@
-import {
- HOUR_IN_DAY,
- MINUTES_IN_HOUR,
- PAGE_TIMELINE,
- SECONDS_IN_HOUR,
- SECONDS_IN_MINUTES
-} from "@/constants.js"
-import { isNull, isPageValid } from "@/components/validator.js"
-
-export const normalizePagesHash = () => {
- const page = window.location.hash.slice(1)
-
- if (isPageValid(page)) return page
-
- window.location.hash = PAGE_TIMELINE
-
- return PAGE_TIMELINE
-}
+import { HOUR_IN_DAY, MINUTES_IN_HOUR, SECONDS_IN_HOUR, SECONDS_IN_MINUTES } from "@/constants.js"
+import { isNull } from "@/components/validator.js"
 
 export function getTotalActivitySeconds(activity, timelineItems) {
  return timelineItems

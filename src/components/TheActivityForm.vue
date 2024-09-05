@@ -1,11 +1,11 @@
 <script setup>
 import BaseButton from "@/components/BaseButton.vue"
 import { PlusIcon } from "@heroicons/vue/24/outline/index.js"
-import { ref, nextTick, inject } from "vue"
+import { ref, nextTick } from "vue"
 import { id } from "@/function.js"
+import { createActivity } from "@/activities.js"
 
 const name = ref("")
-const createActivity = inject("createActivity")
 
 async function submit() {
  createActivity({

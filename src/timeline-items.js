@@ -7,7 +7,7 @@ export const timelineItemsRefs = ref([])
 
 export const timelineItems = ref(generateTimelineItems(activities.value))
 
-export function scrollToCurrentHour(isSmooth = true) {
+export function scrollToCurrentHour(isSmooth = false) {
  scrollToHour(currentHour(), isSmooth)
 }
 

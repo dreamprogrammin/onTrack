@@ -13,13 +13,8 @@ export const normalizePagesHash = () => {
 }
 
 export const currentPage = ref(normalizePagesHash())
-export const timelineRef = ref()
 
 export const navigate = (page) => {
- if (currentPage.value === PAGE_TIMELINE && page === PAGE_TIMELINE) {
-  timelineRef.value.scrollToHour()
- } else if (page !== PAGE_TIMELINE) {
-  document.body.scrollIntoView()
- }
+ document.body.scrollIntoView()
  currentPage.value = page
 }

@@ -19,8 +19,8 @@ function generateActivitiesSelectOptions(activities) {
  return activities.map((activity) => ({ value: activity.id, label: activity.name }))
 }
 
-export function setActivitySecondToComplete(activity, secondToComplete) {
- activity.secondToComplete = secondToComplete || 0
+export function updateActivity(activity, fields) {
+ return Object.assign(activity, fields)
 }
 
 export function createActivity(activity) {

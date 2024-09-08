@@ -7,6 +7,10 @@ export const activitySelectOptions = computed(() =>
  generateActivitiesSelectOptions(activities.value)
 )
 
+export const trackActivities = computed(() =>
+ activities.value.filter(({ secondToComplete }) => secondToComplete)
+)
+
 function generateActivities() {
  return ["Reading", "Coding", "Training"].map((name, hour) => ({
   id: id(),

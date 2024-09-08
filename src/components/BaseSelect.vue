@@ -7,10 +7,11 @@ import {
  isSelectValueValid
 } from "@/components/validator.js"
 import BaseButton from "@/components/BaseButton.vue"
-import { XMarkIcon } from "@heroicons/vue/24/outline/index.js"
 import { computed } from "vue"
 import { BUTTON_TYPE_NEUTRAL } from "@/constants.js"
 import { normalizeSelectValue } from "@/function.js"
+import BaseIcon from "@/BaseIcon.vue"
+import { ICON_X_MARK } from "@/icons.js"
 
 const props = defineProps({
  placeholder: { required: true, type: String },
@@ -36,7 +37,7 @@ function select(value) {
 <template>
  <div class="flex gap-2">
   <base-button :type="BUTTON_TYPE_NEUTRAL" @click="select(null)">
-   <XMarkIcon class="h-8" />
+   <base-icon :name="ICON_X_MARK" />
   </base-button>
   <select
    class="w-full truncate rounded bg-gray-100 px-2 py-1 text-2xl"

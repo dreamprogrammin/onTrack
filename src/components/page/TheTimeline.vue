@@ -1,6 +1,5 @@
 <script setup>
 import TimeLine from "@/components/TimeLine.vue"
-import { PAGE_TIMELINE } from "@/constants.js"
 import {
  timelineItems,
  timelineItemsRefs,

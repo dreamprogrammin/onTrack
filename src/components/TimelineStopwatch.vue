@@ -1,6 +1,5 @@
 <script setup>
 import BaseButton from "@/components/BaseButton.vue"
-import { ArrowPathIcon, PauseIcon, PlayIcon } from "@heroicons/vue/24/outline/index.js"
 import { currentHour, formatSeconds } from "@/function.js"
 import {
  MILLISECONDS_IN_SECONDS,
@@ -10,7 +9,9 @@ import {
 } from "@/constants.js"
 import { isTimelineItemValid } from "@/components/validator.js"
 import { ref, watch } from "vue"
-import { updateTimelineItemActivitySeconds, updateTimelineItems } from "@/timeline-items.js"
+import { updateTimelineItems } from "@/timeline-items.js"
+import BaseIcon from "@/BaseIcon.vue"
+import { ICON_ARROW_PATCH, ICON_PAUSE, ICON_PLAY } from "@/icons.js"
 
 const props = defineProps({
  timelineItem: {
@@ -56,16 +57,16 @@ watch(
 <template>
  <div class="flex w-full gap-2">
   <base-button :type="BUTTON_TYPE_DANGER" :disabled="!seconds" @click="reset">
-   <ArrowPathIcon class="h-8" />
+   <base-icon :name="ICON_ARROW_PATCH" />
   </base-button>
   <div class="flex flex-grow items-center rounded-sm bg-gray-100 px-2 font-mono text-3xl">
    {{ formatSeconds(seconds) }}
   </div>
   <base-button v-if="isRunning" :type="BUTTON_TYPE_WARNING" @click="stop">
-   <PauseIcon class="h-8" />
+   <BaseIcon :name="ICON_PAUSE" />
   </base-button>
   <base-button v-else :type="BUTTON_TYPE_SUCCESS" :disabled="isStartButtonDisabled" @click="start">
-   <PlayIcon class="h-8" />
+   <base-icon :name="ICON_PLAY" />
   </base-button>
  </div>
 </template>

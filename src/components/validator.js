@@ -1,4 +1,9 @@
 import { BUTTON_TYPES, HOUR_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from "@/constants.js"
+import { ICONS } from "@/icons.js"
+
+export function isIconsValid(icon) {
+ return Object.keys(ICONS).includes(icon)
+}
 
 export function isPageValid(page) {
  return NAV_ITEMS.some((navItem) => navItem.page === page)
@@ -67,7 +72,7 @@ export function isActivityValid({ id, name, secondToComplete }) {
  return [isNotEmptyString(id), isNotEmptyString(name), isNumber(secondToComplete)].every(Boolean)
 }
 
-function isNotEmptyString(value) {
+export function isNotEmptyString(value) {
  return isString(value) && value.length > 0
 }
 

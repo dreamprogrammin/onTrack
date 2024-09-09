@@ -4,7 +4,6 @@ import { HOUR_IN_DAY, MIDNIGHT_HOUR } from "@/constants.js"
 import { currentHour } from "@/function.js"
 
 export const timelineItemsRefs = ref([])
-
 export const timelineItems = ref(generateTimelineItems(activities.value))
 
 export function scrollToCurrentHour(isSmooth = false) {
@@ -21,18 +20,16 @@ export function updateTimelineItems(timelineItems, fields) {
  return Object.assign(timelineItems, fields)
 }
 
-export function getTotalActivitySeconds(activity) {
- return timelineItems.value
-  .filter((timelineItem) => hasActivity(timelineItem, activity))
-  .reduce((totalSecond, timelineItem) => Math.round(timelineItem.activitySeconds + totalSecond), 0)
+export function calculateTrackedActivitySeconds(timelineItems, activity) {
+ return filterTimelineItemsByActivity(timelineItems, activity)
+  .map(({ activitySeconds }) => activitySeconds)
+  .reduce((total, seconds) => Math.round(total + seconds), 0)
 }
 
-export function resetTimelineItemActivities(activity) {
- timelineItems.value
-  .filter((timelineItem) => hasActivity(timelineItem, activity))
-  .forEach((timelineItem) =>
-   updateTimelineItems(timelineItem, { activityId: null, activitySeconds: 0 })
-  )
+export function resetTimelineItemActivities(timelineItems, activity) {
+ return filterTimelineItemsByActivity(timelineItems, activity).forEach((timelineItem) =>
+  updateTimelineItems(timelineItem, { activityId: null, activitySeconds: 0 })
+ )
 }
 
 export function generateTimelineItems(activities) {
@@ -45,6 +42,6 @@ export function generateTimelineItems(activities) {
  }))
 }
 
-function hasActivity(timelineItem, activity) {
- return timelineItem.activityId === activity.id
+function filterTimelineItemsByActivity(timelineItems, { id }) {
+ return timelineItems.filter(({ activityId }) => activityId === id)
 }

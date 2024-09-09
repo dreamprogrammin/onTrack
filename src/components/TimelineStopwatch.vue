@@ -25,13 +25,14 @@ const isStartButtonDisabled = props.timelineItem.hour !== currentHour()
 
 const seconds = ref(props.timelineItem.activitySeconds)
 const isRunning = ref(false)
+const temp = 120
 
 function start() {
  isRunning.value = setInterval(() => {
   updateTimelineItems(props.timelineItem, {
-   activitySeconds: props.timelineItem.activitySeconds + 1
+   activitySeconds: props.timelineItem.activitySeconds + temp
   })
-  seconds.value++
+  seconds.value += temp
  }, MILLISECONDS_IN_SECONDS)
 }
 function stop() {

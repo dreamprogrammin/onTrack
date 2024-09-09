@@ -5,12 +5,7 @@ import { trackActivities } from "@/activities.js"
 
 <template>
  <ul class="divide-y">
-  <progress-items
-   v-for="(activity, index) of trackActivities"
-   :key="activity.id"
-   :index="index"
-   :activity="activity"
-  />
+  <progress-items v-for="activity of trackActivities" :key="activity.id" :activity="activity" />
  </ul>
 </template>
 

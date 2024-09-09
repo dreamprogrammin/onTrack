@@ -17,10 +17,6 @@ export function scrollToHour(hour, isSmooth = true) {
  el.scrollIntoView({ behavior: isSmooth ? "smooth" : "instant" })
 }
 
-export function updateTimelineItemActivitySeconds(timelineItem, activitySeconds) {
- timelineItem.activitySeconds = activitySeconds
-}
-
 export function updateTimelineItems(timelineItems, fields) {
  return Object.assign(timelineItems, fields)
 }
@@ -42,8 +38,8 @@ export function resetTimelineItemActivities(activity) {
 export function generateTimelineItems(activities) {
  return [...Array(HOUR_IN_DAY).keys()].map((hour) => ({
   hour,
-  activityId: [0, 1, 2, 3, 4].includes(hour) ? activities[hour % 3].id : null,
-  activitySeconds: [0, 1, 2, 3, 4].includes(hour) ? hour * 600 : 0
+  activityId: null, // [0, 1, 2, 3, 4].includes(hour) ? activities[hour % 3].id : null,
+  activitySeconds: 0 // [0, 1, 2, 3, 4].includes(hour) ? hour * 600 : 0
   // activityId: hour % 4 === 0 ? null : activities[hour % 2].id,
   // activitySeconds: hour % 4 === 0 ? 0 : (15 * SECONDS_IN_MINUTES * hour) % SECONDS_IN_HOUR
  }))

@@ -1,5 +1,4 @@
 import { ref } from "vue"
-import { activities } from "@/activities.js"
 import { HOUR_IN_DAY, MIDNIGHT_HOUR } from "@/constants.js"
 import { currentHour } from "@/function.js"
 
@@ -26,16 +25,19 @@ export function calculateTrackedActivitySeconds(timelineItems, activity) {
   .reduce((total, seconds) => Math.round(total + seconds), 0)
 }
 
-export function resetTimelineItemActivities(timelineItems, activity) {
- return filterTimelineItemsByActivity(timelineItems, activity).forEach((timelineItem) =>
-  updateTimelineItems(timelineItem, { activityId: null, activitySeconds: 0 })
+export function resetTimelineItemActivities(timelineItem, activity) {
+ return filterTimelineItemsByActivity(timelineItem, activity).forEach((timelineItem) =>
+  updateTimelineItems(timelineItem, {
+   activityId: null,
+   activitySeconds: timelineItem.hour === currentHour() ? timelineItem.activitySeconds : 0
+  })
  )
 }
 
-export function generateTimelineItems(activities) {
+export function generateTimelineItems() {
  return [...Array(HOUR_IN_DAY).keys()].map((hour) => ({
   hour,
-  activityId: null, // [0, 1, 2, 3, 4].includes(hour) ? activities[hour % 3].id : null,
+  activityId: null, //[0, 1, 2, 3, 4].includes(hour) ? activities.value[hour % 3].id : null,
   activitySeconds: 0 // [0, 1, 2, 3, 4].includes(hour) ? hour * 600 : 0
   // activityId: hour % 4 === 0 ? null : activities[hour % 2].id,
   // activitySeconds: hour % 4 === 0 ? 0 : (15 * SECONDS_IN_MINUTES * hour) % SECONDS_IN_HOUR

@@ -5,7 +5,7 @@ import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from "@/constants.js"
 import { isActivityValid } from "@/components/validator.js"
 import RemainingActivitySeconds from "@/components/RemainingActivitySeconds.vue"
 import { deleteActivity, updateActivity } from "@/activities.js"
-import { resetTimelineItemActivities } from "@/timeline-items.js"
+import { resetTimelineItemActivities, timelineItems } from "@/timeline-items.js"
 import BaseIcon from "@/BaseIcon.vue"
 import { ICON_TRASH } from "@/icons.js"
 
@@ -14,7 +14,7 @@ defineProps({
 })
 
 function resetAndDeleteActivity(activity) {
- resetTimelineItemActivities(activity)
+ resetTimelineItemActivities(timelineItems.value, activity)
  deleteActivity(activity)
 }
 </script>

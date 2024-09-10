@@ -31,7 +31,7 @@ const typeClasses = {
 
 <template>
  <button :class="classes">
-  <slot></slot>
+  <slot />
  </button>
 </template>
 

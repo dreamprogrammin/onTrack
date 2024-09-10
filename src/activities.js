@@ -15,6 +15,10 @@ export function calculateActivityCompletionPercentage({ secondToComplete }, trac
  return Math.floor((trackedActivity * HUNDRED_PERCENT) / secondToComplete)
 }
 
+export function calculateCompletionPercentage(totalTrackedSeconds) {
+ return Math.floor((totalTrackedSeconds * HUNDRED_PERCENT) / totalActivitySecondsToComplete.value)
+}
+
 function generateActivities() {
  return ["Reading", "Coding", "Training"].map((name, hour) => ({
   id: id(),
@@ -27,6 +31,11 @@ function generateActivitiesSelectOptions(activities) {
  return activities.map((activity) => ({ value: activity.id, label: activity.name }))
 }
 
+const totalActivitySecondsToComplete = computed(() => {
+ return trackActivities.value
+  .map(({ secondToComplete }) => secondToComplete)
+  .reduce((total, seconds) => total + seconds, 0)
+})
 export function updateActivity(activity, fields) {
  return Object.assign(activity, fields)
 }

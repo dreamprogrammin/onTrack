@@ -1,9 +1,10 @@
 import { ref } from "vue"
 import { HOUR_IN_DAY, MIDNIGHT_HOUR } from "@/constants.js"
 import { currentHour } from "@/function.js"
+// import { activities } from "@/activities.js"
 
 export const timelineItemsRefs = ref([])
-export const timelineItems = ref(generateTimelineItems(activities.value))
+export const timelineItems = ref(generateTimelineItems())
 
 export function scrollToCurrentHour(isSmooth = false) {
  scrollToHour(currentHour(), isSmooth)

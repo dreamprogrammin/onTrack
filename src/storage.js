@@ -1,6 +1,10 @@
 import { APP_KEY } from "@/constants.js"
 
-export function load() {}
+export function load() {
+ const state = localStorage.getItem(APP_KEY)
+
+ return state ? JSON.parse(state) : {}
+}
 
 export function save(data) {
  localStorage.setItem(

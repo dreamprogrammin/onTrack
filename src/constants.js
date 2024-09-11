@@ -11,6 +11,7 @@ export const MINUTES_IN_HOUR = 60
 export const SECONDS_IN_HOUR = SECONDS_IN_MINUTES * MINUTES_IN_HOUR
 export const HOUR_IN_DAY = 24
 export const MIDNIGHT_HOUR = 0
+export const SECONDS_IN_DAY = SECONDS_IN_HOUR * HOUR_IN_DAY
 
 export const LOW_PERCENT = 33
 export const MIDDLE_PERCENT = 66

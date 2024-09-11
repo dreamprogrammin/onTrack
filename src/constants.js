@@ -1,6 +1,8 @@
 import { generatePeriodSelectOptions } from "@/function.js"
 import { ICON_CHART_BAR, ICON_CLOCK, ICON_LIST_BULLET } from "@/icons.js"
 
+export const APP_KEY = "onTrack"
+
 export const PAGE_TIMELINE = "timeline"
 export const PAGE_ACTIVITIES = "activities"
 export const PAGE_PROGRESS = "progress"

@@ -1,6 +1,6 @@
 <script setup>
 import BaseButton from "@/components/BaseButton.vue"
-import { currentHour, formatSeconds } from "@/function.js"
+import { formatSeconds } from "@/function.js"
 import { BUTTON_TYPE_DANGER, BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING } from "@/constants.js"
 import { isTimelineItemValid } from "@/components/validator.js"
 import BaseIcon from "@/BaseIcon.vue"
@@ -8,6 +8,7 @@ import { ICON_ARROW_PATCH, ICON_PAUSE, ICON_PLAY } from "@/icons.js"
 import { useStopwatch } from "@/composables/stopwatch.js"
 import { updateTimelineItems } from "@/timeline-items.js"
 import { watchEffect } from "vue"
+import { now } from "@/time.js"
 
 const props = defineProps({
  timelineItem: {
@@ -18,6 +19,12 @@ const props = defineProps({
 })
 
 const { seconds, isRunning, start, stop, reset } = useStopwatch(props.timelineItem.activitySeconds)
+
+watchEffect(() => {
+ if (props.timelineItem.hour !== now.value.getHours() && isRunning.value) {
+  stop()
+ }
+})
 
 watchEffect(() =>
  updateTimelineItems(props.timelineItem, {
@@ -40,7 +47,7 @@ watchEffect(() =>
   <base-button
    v-else
    :type="BUTTON_TYPE_SUCCESS"
-   :disabled="timelineItem.hour !== currentHour()"
+   :disabled="timelineItem.hour !== now.getHours()"
    @click="start"
   >
    <base-icon :name="ICON_PLAY" />

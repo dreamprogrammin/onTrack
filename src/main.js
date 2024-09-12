@@ -5,6 +5,7 @@ import { createApp } from "vue"
 import App from "./App.vue"
 import { timelineItems } from "@/timeline-items.js"
 import { activities } from "@/activities.js"
+import { isToday } from "@/time.js"
 
 loadState()
 
@@ -15,8 +16,8 @@ document.addEventListener("visibilitychange", () => {
 function loadState() {
  const state = storage.load()
 
- timelineItems.value = state.timelineItems
- activities.value = state.activity
+ timelineItems.value = isToday(new Date(state.data)) ? state.timelineItems : timelineItems.value
+ activities.value = state.activity || activities.value
 }
 
 function saveState() {

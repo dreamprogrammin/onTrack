@@ -6,11 +6,27 @@ import {
  SECONDS_IN_MINUTES
 } from "@/constants.js"
 
-const date = new Date()
+export function today() {
+ const today = new Date()
 
-date.setHours(0, 0)
+ today.setHours(0, 0)
 
-export const now = ref(date)
+ return today
+}
+
+export function tomorrow() {
+ const tomorrow = new Date()
+
+ tomorrow.setDate(tomorrow.getDate() + 1)
+
+ return tomorrow
+}
+
+export function isToday(date) {
+ return date.toDateString() === today().toString()
+}
+
+export const now = ref(today())
 
 const midnight = computed(() => new Date(now.value).setHours(0, 0, 0, 0))
 
@@ -23,7 +39,7 @@ export const secondsSinceMidnightInPercentage = computed(() => {
 let timer = null
 
 export function startTimer() {
- now.value = date
+ now.value = today()
 
  timer = setInterval(() => {
   now.value = new Date(now.value.getTime() + SECONDS_IN_MINUTES * MILLISECONDS_IN_SECONDS)

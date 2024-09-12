@@ -1,4 +1,5 @@
 import { APP_KEY } from "@/constants.js"
+import { today } from "@/time.js"
 
 export function load() {
  const state = localStorage.getItem(APP_KEY)
@@ -11,7 +12,7 @@ export function save(data) {
   APP_KEY,
   JSON.stringify({
    ...data,
-   data: new Date().toDateString()
+   data: today().toDateString()
   })
  )
 }

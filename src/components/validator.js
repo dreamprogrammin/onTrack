@@ -61,10 +61,6 @@ export function isButtonTypeValid(type) {
  return BUTTON_TYPES.includes(type)
 }
 
-export function validateActivities(activities) {
- return activities.every(isActivityValid)
-}
-
 export function isActivityValid({ id, name, secondToComplete }) {
  if (isNull(id)) {
   return true

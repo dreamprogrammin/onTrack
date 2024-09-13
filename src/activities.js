@@ -1,5 +1,4 @@
 import { computed, ref } from "vue"
-import { id } from "@/function.js"
 import { HUNDRED_PERCENT } from "@/constants.js"
 
 export const activities = ref([])
@@ -38,4 +37,8 @@ export function createActivity(activity) {
 
 export function deleteActivity(activity) {
  activities.value.splice(activities.value.indexOf(activity), 1)
+}
+
+export function initializeActivities(state) {
+ activities.value = state.activities || []
 }

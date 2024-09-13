@@ -1,20 +1,16 @@
 import "./assets/main.css"
-import { loadState, saveState } from "@/storage.js"
-import { findActivitySeconds, startTimelineItemsTimer } from "@/timeline-items.js"
+import { syncState } from "@/storage.js"
 
 import { createApp } from "vue"
 import App from "./App.vue"
+import { startCurrentDateTimer } from "@/time.js"
 
-loadState()
+syncState()
 
-const activeTimelineItem = findActivitySeconds()
-
-if (activeTimelineItem) {
- startTimelineItemsTimer(activeTimelineItem)
-}
+startCurrentDateTimer()
 
 document.addEventListener("visibilitychange", () =>
- document.visibilityState === "visible" ? loadState() : saveState()
+ syncState(document.visibilityState === "visible")
 )
 
 createApp(App).mount("#app")

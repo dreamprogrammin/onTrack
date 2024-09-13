@@ -1,20 +1,23 @@
-import { APP_NAME, MILLISECONDS_IN_SECONDS } from "@/constants.js"
-import { endOfHour, isToday, today, toSeconds } from "@/time.js"
-import { timelineItems } from "@/timeline-items.js"
-import { activities } from "@/activities.js"
+import { APP_NAME } from "@/constants.js"
+import { today } from "@/time.js"
+import { activeTimelineItems, timelineItems, initializeTimelineItems } from "@/timeline-items.js"
+import { activities, initializeActivities } from "@/activities.js"
+import { startTimelineItemTimer, stopTimelineItemTimer } from "@/timeline-item-timer.js"
+
+export function syncState(shouldSLoad = true) {
+ shouldSLoad ? loadState() : saveState()
+
+ if (activeTimelineItems.value) {
+  shouldSLoad ? startTimelineItemTimer() : stopTimelineItemTimer()
+ }
+}
 
 export function loadState() {
- const serializedState = localStorage.getItem(APP_NAME)
- const state = serializedState ? JSON.parse(serializedState) : {}
+ const state = loadFromLocalStorage()
 
- activities.value = state.activities || activities.value
- const lastActiveAt = new Date(state.lastActiveAt)
+ initializeActivities(state)
 
- timelineItems.value = isToday(lastActiveAt)
-  ? syncIdleSeconds(state.timelineItems, lastActiveAt)
-  : timelineItems.value
-
- console.log(isToday(lastActiveAt))
+ initializeTimelineItems(state)
 }
 
 export function saveState() {
@@ -28,18 +31,6 @@ export function saveState() {
  )
 }
 
-function syncIdleSeconds(timelineItems, lastActiveAt) {
- const activeTimelineItem = timelineItems.find(({ isActive }) => isActive)
- console.log(activeTimelineItem)
- if (activeTimelineItem) {
-  activeTimelineItem.activitySeconds +=
-   calculateSyncIdleSeconds(lastActiveAt) / MILLISECONDS_IN_SECONDS
- }
- return timelineItems
-}
-
-function calculateSyncIdleSeconds(lastActiveAt) {
- return lastActiveAt.getHours() === today().getHours()
-  ? toSeconds(today() - lastActiveAt)
-  : toSeconds(endOfHour(lastActiveAt) - lastActiveAt)
+function loadFromLocalStorage() {
+ return JSON.parse(localStorage.getItem(APP_NAME) ?? "{}")
 }

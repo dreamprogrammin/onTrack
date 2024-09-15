@@ -1,5 +1,5 @@
 import { computed } from "vue"
-import { calculateCompletionPercentage, trackActivities } from "@/activities.js"
+import { calculateCompletionPercentage, trackActivities } from "@/activities.ts"
 import { calculateTrackedActivitySeconds, timelineItems } from "@/timeline-items.js"
 import { getProgressColorClass } from "@/function.js"
 

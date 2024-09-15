@@ -1,7 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import TheHeader from "@/components/TheHeader.vue"
 import TheNav from "@/components/TheNav.vue"
 import { navigate, currentPage, routes } from "@/router.js"
+
+const name:string = 'malik'
+
+console.log(name)
+
 </script>
 <template>
  <the-header @navigator="navigate" />

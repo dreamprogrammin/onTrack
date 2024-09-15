@@ -7,6 +7,8 @@ import { startCurrentDateTimer } from "@/time.js"
 
 syncState()
 
+
+
 startCurrentDateTimer()
 
 document.addEventListener("visibilitychange", () =>

@@ -1,7 +1,7 @@
 import { APP_NAME } from "@/constants.js"
 import { today } from "@/time.js"
 import { activeTimelineItems, timelineItems, initializeTimelineItems } from "@/timeline-items.js"
-import { activities, initializeActivities } from "@/activities.js"
+import { activities, initializeActivities } from "@/activities.ts"
 import { startTimelineItemTimer, stopTimelineItemTimer } from "@/timeline-item-timer.js"
 
 export function syncState(shouldSLoad = true) {

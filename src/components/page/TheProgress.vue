@@ -1,6 +1,6 @@
 <script setup>
 import ProgressItems from "@/components/ProgressItems.vue"
-import { trackActivities } from "@/activities.js"
+import { trackActivities } from "@/activities.ts"
 import TheProgressEmptyState from "@/components/TheProgressEmptyState.vue"
 </script>
 

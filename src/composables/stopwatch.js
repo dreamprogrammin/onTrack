@@ -1,5 +1,5 @@
 import { ref } from "vue"
-import { MILLISECONDS_IN_SECONDS } from "@/constants.js"
+import { MILLISECONDS_IN_SECONDS } from "@/constants.ts"
 
 export function useStopwatch(initialSeconds) {
  const seconds = ref(initialSeconds)

@@ -1,4 +1,4 @@
-import { BUTTON_TYPES, HOUR_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from "@/constants.js"
+import { BUTTON_TYPES, HOUR_IN_DAY, MIDNIGHT_HOUR, NAV_ITEMS } from "@/constants.ts"
 import { ICONS } from "@/icons.js"
 
 export function isIconsValid(icon) {

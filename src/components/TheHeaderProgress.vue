@@ -1,5 +1,5 @@
 <script setup>
-import { HUNDRED_PERCENT, PAGE_PROGRESS } from "@/constants.js"
+import { HUNDRED_PERCENT, PAGE_PROGRESS } from "@/constants.ts"
 import { navigate } from "@/router.js"
 import BaseIcon from "@/BaseIcon.vue"
 import { ICON_CHECK_CIRCLE } from "@/icons.js"

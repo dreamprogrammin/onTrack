@@ -1,5 +1,5 @@
 import { computed, ref, watch, watchEffect } from "vue"
-import { HOUR_IN_DAY, MIDNIGHT_HOUR, MILLISECONDS_IN_SECONDS } from "@/constants.js"
+import { HOUR_IN_DAY, MIDNIGHT_HOUR, MILLISECONDS_IN_SECONDS } from "@/constants.ts"
 import { endOfHour, isToday, today, toSeconds, now } from "@/time.js"
 import { stopTimelineItemTimer } from "@/timeline-item-timer.js"
 

@@ -4,7 +4,7 @@ import {
  MILLISECONDS_IN_SECONDS,
  SECONDS_IN_DAY,
  SECONDS_IN_HOUR
-} from "@/constants.js"
+} from "@/constants.ts"
 
 export function today() {
  return new Date()

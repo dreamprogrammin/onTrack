@@ -8,7 +8,7 @@ import {
 } from "@/components/validator.js"
 import BaseButton from "@/components/BaseButton.vue"
 import { computed } from "vue"
-import { BUTTON_TYPE_NEUTRAL } from "@/constants.js"
+import { BUTTON_TYPE_NEUTRAL } from "@/constants.ts"
 import { normalizeSelectValue } from "@/function.js"
 import BaseIcon from "@/BaseIcon.vue"
 import { ICON_X_MARK } from "@/icons.js"

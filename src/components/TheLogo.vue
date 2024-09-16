@@ -1,5 +1,5 @@
 <script setup>
-import { PAGE_TIMELINE } from "@/constants.js"
+import { PAGE_TIMELINE } from "@/constants.ts"
 import { currentPage, navigate } from "@/router.js"
 import { scrollToCurrentHour } from "@/timeline-items.js"
 import { ICON_CLOCK } from "@/icons.js"

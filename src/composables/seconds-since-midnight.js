@@ -5,7 +5,7 @@ import {
  MINUTES_IN_HOUR,
  SECONDS_IN_DAY,
  SECONDS_IN_MINUTES
-} from "@/constants.js"
+} from "@/constants.ts"
 
 export function useSecondsSinceMidnight() {
  const secondsSinceMidnight = ref(calculateSecondsSinceMidnight())

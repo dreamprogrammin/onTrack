@@ -1,7 +1,7 @@
 <script setup>
 import BaseButton from "@/components/BaseButton.vue"
 import BaseSelect from "@/components/BaseSelect.vue"
-import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from "@/constants.js"
+import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from "@/constants.ts"
 import { isActivityValid } from "@/components/validator.js"
 import RemainingActivitySeconds from "@/components/RemainingActivitySeconds.vue"
 import { deleteActivity, updateActivity } from "@/activities.ts"

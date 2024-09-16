@@ -4,7 +4,7 @@ import {
  MIDDLE_PERCENT,
  MINUTES_IN_HOUR,
  SECONDS_IN_MINUTES
-} from "@/constants.js"
+} from "@/constants.ts"
 import { isNull } from "@/components/validator.js"
 
 export function currentHour() {

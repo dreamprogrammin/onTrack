@@ -1,4 +1,4 @@
-import { APP_NAME } from "@/constants.js"
+import { APP_NAME } from "@/constants.ts"
 import { today } from "@/time.js"
 import { activeTimelineItems, timelineItems, initializeTimelineItems } from "@/timeline-items.js"
 import { activities, initializeActivities } from "@/activities.ts"

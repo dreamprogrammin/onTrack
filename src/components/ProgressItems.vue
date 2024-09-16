@@ -1,5 +1,5 @@
 <script setup>
-import { formatSeconds, getProgressColorClass } from "@/function.js"
+import { formatSeconds, getProgressColorClass } from "@/function.ts"
 import { isActivityValid } from "@/components/validator.js"
 import { useProgress } from "@/composables/progress.js"
 import { HUNDRED_PERCENT } from "@/constants.ts"

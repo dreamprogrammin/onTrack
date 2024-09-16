@@ -4,7 +4,7 @@ import { HUNDRED_PERCENT } from "@/constants.js"
 interface Activity {
  id: string,
  name: string,
- secondsToComplete: number
+ secondToComplete: number
 }
 
 interface ActivitySelectOption {

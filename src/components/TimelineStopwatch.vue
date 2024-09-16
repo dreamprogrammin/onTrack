@@ -1,6 +1,6 @@
 <script setup>
 import BaseButton from "@/components/BaseButton.vue"
-import { formatSeconds } from "@/function.js"
+import { formatSeconds } from "@/function.ts"
 import { BUTTON_TYPE_DANGER, BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING } from "@/constants.ts"
 import { isTimelineItemValid } from "@/components/validator.js"
 import BaseIcon from "@/BaseIcon.vue"

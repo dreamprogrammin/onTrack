@@ -9,7 +9,7 @@ import {
 import BaseButton from "@/components/BaseButton.vue"
 import { computed } from "vue"
 import { BUTTON_TYPE_NEUTRAL } from "@/constants.ts"
-import { normalizeSelectValue } from "@/function.js"
+import { normalizeSelectValue } from "@/function.ts"
 import BaseIcon from "@/BaseIcon.vue"
 import { ICON_X_MARK } from "@/icons.js"
 

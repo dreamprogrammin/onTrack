@@ -1,7 +1,7 @@
 <script setup>
 import BaseButton from "@/components/BaseButton.vue"
 import { ref, nextTick } from "vue"
-import { id } from "@/function.js"
+import { id } from "@/function.ts"
 import { createActivity } from "@/activities.ts"
 import BaseIcon from "@/BaseIcon.vue"
 import { ICON_PLUS } from "@/icons.js"

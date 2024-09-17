@@ -1,9 +1,9 @@
 import { generatePeriodSelectOptions } from "@/function.js"
 import { ICON_CHART_BAR, ICON_CLOCK, ICON_LIST_BULLET } from "@/icons.js"
+import type {PageName} from "@/types"
 
 export const APP_NAME = "onTrack"
 
-type pageName = typeof PAGE_TIMELINE | typeof PAGE_ACTIVITIES | typeof PAGE_PROGRESS
 
 export const PAGE_TIMELINE = "timeline"
 export const PAGE_ACTIVITIES = "activities"
@@ -38,7 +38,7 @@ export const BUTTON_TYPES:ButtonType[] = [
 ]
 
 interface NavItem {
- page: pageName,
+ page: PageName,
  icon: any
 }
 

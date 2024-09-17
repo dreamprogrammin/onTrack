@@ -5,7 +5,7 @@ import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from "@/constants.ts"
 import { isActivityValid } from "@/components/validator.js"
 import RemainingActivitySeconds from "@/components/RemainingActivitySeconds.vue"
 import { deleteActivity, updateActivity } from "@/activities.ts"
-import { resetTimelineItemActivities, timelineItems } from "@/timeline-items.js"
+import { resetTimelineItemActivities, timelineItems } from "@/timeline-items.ts"
 import BaseIcon from "@/BaseIcon.vue"
 import { ICON_TRASH } from "@/icons.js"
 

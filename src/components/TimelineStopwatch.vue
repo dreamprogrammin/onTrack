@@ -9,7 +9,7 @@ import {
  resetTimelineItemTimer,
  startTimelineItemTimer,
  stopTimelineItemTimer
-} from "@/timeline-item-timer.js"
+} from "@/timeline-item-timer.ts"
 import { now } from "@/time.ts"
 import { activeTimelineItems } from "@/timeline-items.ts"
 

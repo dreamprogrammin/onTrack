@@ -1,8 +1,9 @@
-import { APP_NAME } from "@/constants.ts"
+import  { APP_NAME } from "@/constants"
 import { today } from "@/time.js"
 import { activeTimelineItems, timelineItems, initializeTimelineItems } from "@/timeline-items.js"
-import { activities, initializeActivities } from "@/activities.ts"
+import { activities, initializeActivities } from "@/activities"
 import { startTimelineItemTimer, stopTimelineItemTimer } from "@/timeline-item-timer.js"
+import { State } from "@/types"
 
 export function syncState(shouldSLoad = true) {
  shouldSLoad ? loadState() : saveState()
@@ -12,7 +13,7 @@ export function syncState(shouldSLoad = true) {
  }
 }
 
-export function loadState() {
+export function loadState():void {
  const state = loadFromLocalStorage()
 
  initializeActivities(state)
@@ -20,7 +21,7 @@ export function loadState() {
  initializeTimelineItems(state)
 }
 
-export function saveState() {
+export function saveState():void {
  localStorage.setItem(
   APP_NAME,
   JSON.stringify({
@@ -31,6 +32,6 @@ export function saveState() {
  )
 }
 
-function loadFromLocalStorage() {
+function loadFromLocalStorage():State {
  return JSON.parse(localStorage.getItem(APP_NAME) ?? "{}")
 }

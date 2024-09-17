@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from "vue"
 import { HUNDRED_PERCENT } from "@/constants.ts"
-import { secondsSinceMidnightInPercentage } from "@/time.js"
+import { secondsSinceMidnightInPercentage } from "@/time.ts"
 
 const indicatorRef = ref()
 

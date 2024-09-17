@@ -3,7 +3,7 @@ import { isHourValid } from "@/components/validator.js"
 import { currentHour } from "@/function.ts"
 import { scrollToHour } from "@/timeline-items.js"
 import { computed } from "vue"
-import { now } from "@/time.js"
+import { now } from "@/time.ts"
 
 const props = defineProps({ hour: { required: true, type: Number, validator: isHourValid } })
 

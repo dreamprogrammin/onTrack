@@ -3,7 +3,7 @@ import { syncState } from "@/storage.js"
 
 import { createApp } from "vue"
 import App from "./App.vue"
-import { startCurrentDateTimer } from "@/time.js"
+import { startCurrentDateTimer } from "@/time"
 
 syncState()
 

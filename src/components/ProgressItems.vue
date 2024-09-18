@@ -1,7 +1,7 @@
 <script setup>
 import { formatSeconds, getProgressColorClass } from "@/function.ts"
-import { isActivityValid } from "@/components/validator.js"
-import { useProgress } from "@/composables/progress.js"
+import { isActivityValid } from "@/components/validator.ts"
+import { useProgress } from "@/composables/progress.ts"
 import { HUNDRED_PERCENT } from "@/constants.ts"
 
 const props = defineProps({

@@ -2,7 +2,7 @@
 import BaseButton from "@/components/BaseButton.vue"
 import { formatSeconds } from "@/function.ts"
 import { BUTTON_TYPE_DANGER, BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING } from "@/constants.ts"
-import { isTimelineItemValid } from "@/components/validator.js"
+import { isTimelineItemValid } from "@/components/validator.ts"
 import BaseIcon from "@/BaseIcon.vue"
 import { ICON_ARROW_PATCH, ICON_PAUSE, ICON_PLAY } from "@/icons.js"
 import {

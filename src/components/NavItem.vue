@@ -1,6 +1,6 @@
 <script setup>
 import { currentPage, navigate } from "@/router.ts"
-import { isNavItemValid } from "@/components/validator.js"
+import { isNavItemValid } from "@/components/validator.ts"
 import { computed } from "vue"
 import BaseIcon from "@/BaseIcon.vue"
 import { PAGE_TIMELINE } from "@/constants.ts"

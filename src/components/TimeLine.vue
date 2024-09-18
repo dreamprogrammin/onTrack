@@ -1,7 +1,7 @@
 <script setup>
 import BaseSelect from "@/components/BaseSelect.vue"
 import TimelineHour from "@/components/TimelineHour.vue"
-import { isTimelineItemValid } from "@/components/validator.js"
+import { isTimelineItemValid } from "@/components/validator.ts"
 import TimelineStopwatch from "@/components/TimelineStopwatch.vue"
 import { activitySelectOptions } from "@/activities.ts"
 import { updateTimelineItems } from "@/timeline-items.ts"

@@ -5,7 +5,7 @@ import {
  validateSelectOptions,
  isUndefinedOrNull,
  isSelectValueValid
-} from "@/components/validator.js"
+} from "@/components/validator.ts"
 import BaseButton from "@/components/BaseButton.vue"
 import { computed } from "vue"
 import { BUTTON_TYPE_NEUTRAL } from "@/constants.ts"

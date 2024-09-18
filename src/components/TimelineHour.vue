@@ -1,5 +1,5 @@
 <script setup>
-import { isHourValid } from "@/components/validator.js"
+import { isHourValid } from "@/components/validator.ts"
 import { currentHour } from "@/function.ts"
 import { scrollToHour } from "@/timeline-items.ts"
 import { computed } from "vue"

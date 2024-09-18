@@ -1,5 +1,5 @@
 <script setup>
-import { isButtonTypeValid } from "@/components/validator.js"
+import { isButtonTypeValid } from "@/components/validator.ts"
 
 const props = defineProps({
  type: {

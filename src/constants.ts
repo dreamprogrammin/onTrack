@@ -1,6 +1,6 @@
 import { generatePeriodSelectOptions } from "@/function.js"
 import { ICON_CHART_BAR, ICON_CLOCK, ICON_LIST_BULLET } from "@/icons.js"
-import type {PageName} from "@/types"
+import type { ButtonType, NavItem} from "@/types"
 
 export const APP_NAME = "onTrack"
 
@@ -21,8 +21,6 @@ export const LOW_PERCENT = 33
 export const MIDDLE_PERCENT = 66
 export const HUNDRED_PERCENT = 100
 
-type ButtonType = typeof BUTTON_TYPE_PRIMARY | typeof BUTTON_TYPE_DANGER | typeof BUTTON_TYPE_NEUTRAL | typeof BUTTON_TYPE_SUCCESS | typeof BUTTON_TYPE_WARNING
-
 export const BUTTON_TYPE_PRIMARY = "primary"
 export const BUTTON_TYPE_DANGER = "danger"
 export const BUTTON_TYPE_NEUTRAL = "neutral"
@@ -36,11 +34,6 @@ export const BUTTON_TYPES:ButtonType[] = [
  BUTTON_TYPE_WARNING,
  BUTTON_TYPE_SUCCESS
 ]
-
-interface NavItem {
- page: PageName,
- icon: any
-}
 
 export const NAV_ITEMS:NavItem[] = [
  {
@@ -57,4 +50,4 @@ export const NAV_ITEMS:NavItem[] = [
  }
 ]
 
-export const PERIOD_SELECT_OPTIONS:any = generatePeriodSelectOptions()
+export const PERIOD_SELECT_OPTIONS = generatePeriodSelectOptions()

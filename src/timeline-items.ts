@@ -11,7 +11,7 @@ export const activeTimelineItems = computed(():TimelineItem | undefined =>
  timelineItems.value.find(({ isActive }):boolean => isActive)
 )
 
-export function updateTimelineItems(timelineItems:TimelineItem, fields:any) {
+export function updateTimelineItems(timelineItems:TimelineItem, fields:Partial<TimelineItem>) {
  return Object.assign(timelineItems, fields)
 }
 
@@ -59,6 +59,8 @@ function resetTimelineItems():void {
   })
  )
 }
+
+
 
 export function initializeTimelineItems(state:State):void {
  const lastActiveAt:Date = new Date(state.lastActiveAt)

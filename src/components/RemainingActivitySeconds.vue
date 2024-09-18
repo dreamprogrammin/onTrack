@@ -1,6 +1,6 @@
 <script setup>
 import { formatSecondsWithSign } from "@/function.ts"
-import { isActivityValid } from "@/components/validator.js"
+import { isActivityValid } from "@/components/validator.ts"
 import { computed } from "vue"
 import { calculateTrackedActivitySeconds, timelineItems } from "@/timeline-items.ts"
 

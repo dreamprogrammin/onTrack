@@ -6,18 +6,8 @@ import {
  SECONDS_IN_MINUTES
 } from "@/constants"
 import { isNull } from "@/components/validator.js"
+import {ProgressColorClass,type SelectOptions} from "@/types"
 
-enum ProgressColorClass {
- red = 'bg-red-500',
- yellow = 'bg-yellow-500',
- blue = 'bg-blue-500',
- green = 'bg-green-500',
-}
-
-interface PeriodSelectOptions {
- value: number,
- label:string
-}
 
 export function currentHour():number {
  return new Date().getHours()
@@ -31,12 +21,12 @@ export function normalizeSelectValue(value:any):any {
  return isNull(value) || isNaN(value) ? value : +value
 }
 
-export function generatePeriodSelectOptions():PeriodSelectOptions[] {
+export function generatePeriodSelectOptions():SelectOptions<number>[] {
  const periodsInMinutes = [
   15, 30, 45, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480
  ]
 
- return periodsInMinutes.map((periodsInMinutes):PeriodSelectOptions => ({
+ return periodsInMinutes.map((periodsInMinutes):SelectOptions<number> => ({
   value: periodsInMinutes * SECONDS_IN_MINUTES,
   label: generatePeriodSelectOptionsValue(periodsInMinutes)
  }))

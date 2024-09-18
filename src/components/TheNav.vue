@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import navItem from "@/components/NavItem.vue"
-import { NAV_ITEMS } from "@/constants.ts"
+import { NAV_ITEMS } from "@/constants"
 </script>
 
 <template>

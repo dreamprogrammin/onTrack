@@ -30,7 +30,7 @@ function resetAndDeleteActivity(activity:Activity):void {
     class="flex-grow font-mono"
     placeholder="h:mm"
     :options="PERIOD_SELECT_OPTIONS"
-    :selected="(activity.secondToComplete || null) as any"
+    :selected="activity.secondToComplete || null"
     @select="updateActivity(activity, { secondToComplete: $event || 0 })"
    />
    <RemainingActivitySeconds v-if="activity.secondToComplete" :activity="activity" />

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import TheLogo from "@/components/TheLogo.vue"
 import TheHeaderProgress from "@/components/TheHeaderProgress.vue"
 </script>

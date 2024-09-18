@@ -1,11 +1,11 @@
-<script setup>
-import { PAGE_TIMELINE } from "@/constants.ts"
-import { currentPage, navigate } from "@/router.ts"
-import { scrollToCurrentHour } from "@/timeline-items.ts"
+<script setup lang="ts">
+import { PAGE_TIMELINE } from "@/constants"
+import { currentPage, navigate } from "@/router"
+import { scrollToCurrentHour } from "@/timeline-items"
 import { ICON_CLOCK } from "@/icons.js"
 import BaseIcon from "@/BaseIcon.vue"
 
-function handleClick() {
+function handleClick():void {
  currentPage.value === PAGE_TIMELINE ? scrollToCurrentHour(true) : navigate(PAGE_TIMELINE)
 }
 </script>

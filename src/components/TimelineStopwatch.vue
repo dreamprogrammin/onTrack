@@ -1,25 +1,22 @@
-<script setup>
+<script setup lang="ts">
 import BaseButton from "@/components/BaseButton.vue"
-import { formatSeconds } from "@/function.ts"
-import { BUTTON_TYPE_DANGER, BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING } from "@/constants.ts"
-import { isTimelineItemValid } from "@/components/validator.ts"
+import { formatSeconds } from "@/function"
+import { BUTTON_TYPE_DANGER, BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING } from "@/constants"
 import BaseIcon from "@/BaseIcon.vue"
 import { ICON_ARROW_PATCH, ICON_PAUSE, ICON_PLAY } from "@/icons.js"
 import {
  resetTimelineItemTimer,
  startTimelineItemTimer,
  stopTimelineItemTimer
-} from "@/timeline-item-timer.ts"
-import { now } from "@/time.ts"
-import { activeTimelineItems } from "@/timeline-items.ts"
+} from "@/timeline-item-timer"
+import { now } from "@/time"
+import { activeTimelineItems } from "@/timeline-items"
+import type { TimelineItem } from "@/types"
 
-defineProps({
- timelineItem: {
-  type: Object,
-  required: true,
-  validator: isTimelineItemValid
- }
-})
+defineProps<{
+ timelineItem : TimelineItem
+}>()
+
 </script>
 
 <template>

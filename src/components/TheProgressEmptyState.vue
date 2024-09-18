@@ -1,4 +1,5 @@
-<script setup></script>
+<script setup lang="ts
+"></script>
 
 <template>
  <div class="flex grow flex-col items-center justify-center gap-4 p-8">

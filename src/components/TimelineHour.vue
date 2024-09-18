@@ -1,13 +1,12 @@
-<script setup>
-import { isHourValid } from "@/components/validator.ts"
-import { currentHour } from "@/function.ts"
-import { scrollToHour } from "@/timeline-items.ts"
+<script setup lang="ts">
+import { scrollToHour } from "@/timeline-items"
 import { computed } from "vue"
-import { now } from "@/time.ts"
+import { now } from "@/time"
+import type { Hour } from "@/types"
 
-const props = defineProps({ hour: { required: true, type: Number, validator: isHourValid } })
+const props = defineProps<{hour : Hour}>()
 
-const classes = computed(() => [
+const classes = computed(():string[] => [
  "absolute",
  "-top-4",
  "left-1/2",
@@ -22,7 +21,7 @@ const classes = computed(() => [
   : "bg-gray-100  text-gray-500"
 ])
 
-const formattedHour = `${props.hour.toString().padStart(2, 0)}:00`
+const formattedHour:string = `${props.hour.toString().padStart(2, '0')}:00`
 </script>
 
 <template>

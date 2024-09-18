@@ -1,9 +1,9 @@
-<script setup>
-import { HUNDRED_PERCENT, PAGE_PROGRESS } from "@/constants.ts"
-import { navigate } from "@/router.ts"
+<script setup lang="ts">
+import { HUNDRED_PERCENT, PAGE_PROGRESS } from "@/constants"
+import { navigate } from "@/router"
 import BaseIcon from "@/BaseIcon.vue"
 import { ICON_CHECK_CIRCLE } from "@/icons.js"
-import { useTotalProgress } from "@/composables/total-progress.ts"
+import { useTotalProgress } from "@/composables/total-progress"
 
 const { percentage, colorClass } = useTotalProgress()
 </script>
